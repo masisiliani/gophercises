@@ -1,2 +1,5 @@
-# gophercises
-Repositório para agrupar os exercícios da plataforma https://gophercises.com/
+# Gophercises
+
+Repositório utilizado para agrupar os exercícios da plataforma https://gophercises.com/
+
+
