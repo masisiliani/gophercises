@@ -10,7 +10,7 @@
 - [x] Marcar quando o placar do usuário. Somar um para cada acerto.
 - [x] Retornar um novo desafio para o usuário logo em seguida, independente se ele acertou ou errou
 - [x] O arquivo deve estar formatado da seguinte forma: `pergunta, resposta`
-- [ ] Mostrar totalizadores de respostas, na seguinte formatação: `corretas: x | erradas: y | total: z`
+- [x] Mostrar totalizadores de respostas, na seguinte formatação: `corretas: x | erradas: y | total: z`
 
 Itens extras 
 - [ ] Selecionar um item da lista de desafios randomicamente 

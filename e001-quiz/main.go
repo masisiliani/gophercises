@@ -25,7 +25,10 @@ func main() {
 	quizList, err := readQuizList(file)
 	checkError(err)
 
-	runQuizToUser(quizList)
+	countCorrectAnswers := runQuizToUser(quizList)
+
+	countCorrectAnswers, countWrongAnswers, totalQuestions := calculateResultQuiz(countCorrectAnswers, len(quizList))
+	printResultQuiz(countCorrectAnswers, countWrongAnswers, totalQuestions)
 
 }
 
@@ -70,7 +73,11 @@ func calculateCorrectAnswer(totalCorrect *int, isCorrect bool) {
 
 func calculateResultQuiz(countCorrectAnswers int, totalQuestions int) (int, int, int) {
 	countWrongAnswers := totalQuestions - countCorrectAnswers
-	return countCorrectAnswers, totalQuestions, countWrongAnswers
+	return countCorrectAnswers, countWrongAnswers, totalQuestions
+}
+
+func printResultQuiz(countCorrectAnswers int, countWrongAnswers int, totalQuestions int) {
+	fmt.Printf("corretas: %v | erradas: %v | total: %v", countCorrectAnswers, countWrongAnswers, totalQuestions)
 }
 
 func checkError(err error) {
