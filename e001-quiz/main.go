@@ -38,7 +38,7 @@ func readQuizList(file *os.File) ([][]string, error) {
 	return reader.ReadAll()
 }
 
-func runQuizToUser(quizList [][]string) {
+func runQuizToUser(quizList [][]string) int {
 	var (
 		response            string
 		countCorrectAnswers int
@@ -52,6 +52,7 @@ func runQuizToUser(quizList [][]string) {
 			verifyResult(response, quiz[1]))
 	}
 
+	return countCorrectAnswers
 }
 
 func verifyResult(response string, expectedResponse string) bool {
@@ -65,6 +66,11 @@ func calculateCorrectAnswer(totalCorrect *int, isCorrect bool) {
 	if isCorrect {
 		*totalCorrect = *totalCorrect + 1
 	}
+}
+
+func calculateResultQuiz(countCorrectAnswers int, totalQuestions int) (int, int, int) {
+	countWrongAnswers := totalQuestions - countCorrectAnswers
+	return countCorrectAnswers, totalQuestions, countWrongAnswers
 }
 
 func checkError(err error) {
