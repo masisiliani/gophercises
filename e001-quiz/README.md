@@ -2,9 +2,9 @@
 
 
 ## Passos de resolução
-- [ ] Criar um programa que consome uma flag, que deve ser o nome do arquivo csv
-- [ ] Abrir um arquivo CSV
-- [ ] Ler um CSV
+- [x] Criar um programa que consome uma flag, que deve ser o nome do arquivo csv
+- [x] Abrir um arquivo CSV
+- [x] Ler um CSV
 - [ ] Normalizar desafios
 - [ ] Manter os desafios do CSV na memória
 - [ ] Retornar um dos desafios para o usuário
