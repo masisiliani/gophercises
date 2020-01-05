@@ -19,6 +19,7 @@ func init() {
 func main() {
 
 	file, err := openFile()
+	defer file.Close()
 	checkError(err)
 
 	quizList, err := readQuizList(file)
