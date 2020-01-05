@@ -24,7 +24,7 @@ func main() {
 	quizList, err := readQuizList(file)
 	checkError(err)
 
-	requestQuizToUser(quizList)
+	runQuizToUser(quizList)
 
 }
 
@@ -37,11 +37,32 @@ func readQuizList(file *os.File) ([][]string, error) {
 	return reader.ReadAll()
 }
 
-func requestQuizToUser(quizList [][]string) {
-	var response string
+func runQuizToUser(quizList [][]string) {
+	var (
+		response            string
+		countCorrectAnswers int
+	)
 	for _, quiz := range quizList {
 		fmt.Printf("%s = ", quiz[0])
 		fmt.Scanln(&response)
+
+		calculateCorrectAnswer(
+			&countCorrectAnswers,
+			verifyResult(response, quiz[1]))
+	}
+
+}
+
+func verifyResult(response string, expectedResponse string) bool {
+	if response == expectedResponse {
+		return true
+	}
+	return false
+}
+
+func calculateCorrectAnswer(totalCorrect *int, isCorrect bool) {
+	if isCorrect {
+		*totalCorrect = *totalCorrect + 1
 	}
 }
 
