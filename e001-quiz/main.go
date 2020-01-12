@@ -15,9 +15,9 @@ func init() {
 
 func main() {
 
-	// objFile, err := file.OpenFile()
+	// objFile, err := filePkg.OpenFile()
 	// defer objFile.Close()
-	// checkError(err)
+	// errorPkg.CheckError(err)
 
 	// quizList, err := readQuizList(objFile)
 	// checkError(err)
