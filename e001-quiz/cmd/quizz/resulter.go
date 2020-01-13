@@ -9,15 +9,15 @@ func verifyResult(response string, expectedResponse string) bool {
 	return false
 }
 
+func calculateResultQuiz(countCorrectAnswers int, totalQuestions int) (int, int) {
+	countWrongAnswers := totalQuestions - countCorrectAnswers
+	return countWrongAnswers, totalQuestions
+}
+
 func calculateCorrectAnswer(totalCorrect *int, isCorrect bool) {
 	if isCorrect {
 		*totalCorrect = *totalCorrect + 1
 	}
-}
-
-func calculateResultQuiz(countCorrectAnswers int, totalQuestions int) (int, int, int) {
-	countWrongAnswers := totalQuestions - countCorrectAnswers
-	return countCorrectAnswers, countWrongAnswers, totalQuestions
 }
 
 func printResultQuiz(countCorrectAnswers int, countWrongAnswers int, totalQuestions int) {

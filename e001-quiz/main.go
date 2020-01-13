@@ -2,6 +2,10 @@ package main
 
 import (
 	"flag"
+
+	errorPkg "github.com/masisiliani/gophercises/e001-quiz/cmd/error"
+	filePkg "github.com/masisiliani/gophercises/e001-quiz/cmd/file"
+	"github.com/masisiliani/gophercises/e001-quiz/cmd/quizz"
 )
 
 var csvFilename string
@@ -15,16 +19,13 @@ func init() {
 
 func main() {
 
-	// objFile, err := filePkg.OpenFile()
-	// defer objFile.Close()
-	// errorPkg.CheckError(err)
+	objFile, err := filePkg.OpenFile(csvFilename)
+	defer objFile.Close()
+	errorPkg.CheckError(err)
 
-	// quizList, err := readQuizList(objFile)
-	// checkError(err)
+	quizList, err := filePkg.ReadQuizList(objFile)
+	errorPkg.CheckError(err)
 
-	// countCorrectAnswers := runQuizToUser(quizList)
-
-	// countCorrectAnswers, countWrongAnswers, totalQuestions := calculateResultQuiz(countCorrectAnswers, len(quizList))
-	// printResultQuiz(countCorrectAnswers, countWrongAnswers, totalQuestions)
+	quizz.RunQuizToUser(quizList)
 
 }

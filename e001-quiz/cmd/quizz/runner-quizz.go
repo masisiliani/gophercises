@@ -2,7 +2,7 @@ package quizz
 
 import "fmt"
 
-func RunQuizToUser(quizList [][]string) int {
+func RunQuizToUser(quizList [][]string) {
 	var (
 		response            string
 		countCorrectAnswers int
@@ -16,5 +16,7 @@ func RunQuizToUser(quizList [][]string) int {
 		calculateCorrectAnswer(&countCorrectAnswers, isCorrect)
 	}
 
-	return countCorrectAnswers
+	countWrongAnswers, totalQuestions := calculateResultQuiz(countCorrectAnswers, len(quizList))
+	printResultQuiz(countCorrectAnswers, countWrongAnswers, totalQuestions)
+
 }
