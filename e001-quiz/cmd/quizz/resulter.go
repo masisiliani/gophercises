@@ -9,17 +9,17 @@ func verifyResult(response string, expectedResponse string) bool {
 	return false
 }
 
-func calculateResultQuiz(countCorrectAnswers int, totalQuestions int) (int, int) {
-	countWrongAnswers := totalQuestions - countCorrectAnswers
-	return countWrongAnswers, totalQuestions
+func calculateResultQuiz(countAnswered, countCorrectAnswers int32) int32 {
+	countWrongAnswers := countAnswered - countCorrectAnswers
+	return countWrongAnswers
 }
 
-func calculateCorrectAnswer(totalCorrect *int, isCorrect bool) {
+func calculateCorrectAnswer(totalCorrect *int32, isCorrect bool) {
 	if isCorrect {
 		*totalCorrect = *totalCorrect + 1
 	}
 }
 
-func printResultQuiz(countCorrectAnswers int, countWrongAnswers int, totalQuestions int) {
-	fmt.Printf("corretas: %v | erradas: %v | total: %v", countCorrectAnswers, countWrongAnswers, totalQuestions)
+func printResultQuiz(countResponse, countCorrectAnswers, countWrongAnswers, totalQuestions int32) {
+	fmt.Printf("respondidas: %v | corretas: %v | erradas: %v | total: %v", countResponse, countCorrectAnswers, countWrongAnswers, totalQuestions)
 }

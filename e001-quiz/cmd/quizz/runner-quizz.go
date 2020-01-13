@@ -2,21 +2,29 @@ package quizz
 
 import "fmt"
 
+import "strings"
+
 func RunQuizToUser(quizList [][]string) {
 	var (
-		response            string
-		countCorrectAnswers int
+		response                            string
+		countCorrectAnswered, countAnswered int32
 	)
+
 	for _, quiz := range quizList {
 		fmt.Printf("%s = ", quiz[0])
 		fmt.Scanln(&response)
 
+		if strings.Compare(response, "*") == 0 {
+			break
+		}
+
 		isCorrect := verifyResult(response, quiz[1])
 
-		calculateCorrectAnswer(&countCorrectAnswers, isCorrect)
+		calculateCorrectAnswer(&countCorrectAnswered, isCorrect)
+		countAnswered++
 	}
 
-	countWrongAnswers, totalQuestions := calculateResultQuiz(countCorrectAnswers, len(quizList))
-	printResultQuiz(countCorrectAnswers, countWrongAnswers, totalQuestions)
+	countWrongAnswers := calculateResultQuiz(countAnswered, countCorrectAnswered)
+	printResultQuiz(countAnswered, countCorrectAnswered, countWrongAnswers, int32(len(quizList)))
 
 }
