@@ -10,14 +10,15 @@
 - [x] Marcar quando o placar do usuário. Somar um para cada acerto.
 - [x] Retornar um novo desafio para o usuário logo em seguida, independente se ele acertou ou errou
 - [x] O arquivo deve estar formatado da seguinte forma: `pergunta, resposta`
-- [x] Mostrar totalizadores de respostas, na seguinte formatação: `corretas: x | erradas: y | total: z`
+- [x] Mostrar totalizadores de respostas, na seguinte formatação: `respondidas: x | corretas: y | erradas: z | total: xx`
 
 Itens extras 
 - [ ] Selecionar um item da lista de desafios randomicamente 
-- [ ] Permitir que o usuário escolha quando parar 
-- [ ] Mostrar totalizadores após usuários escolher quando parar
+- [x] Permitir que o usuário escolha quando parar 
+- [x] Mostrar totalizadores após usuários escolher quando parar
 
 Onde a primeira coluna antes da vírgula é a operação, e a segunda coluna é a resposta.
-- [ ] No final o programa deve retornar a quantidade de questões corretas, e quantas foram perguntadas.
-- [ ] Os testes devem cobrir o seguinte caso `"what 2+2, sir?",4` como uma operação válida.
 - [ ] Cobrir com testes
+- [x] No final o programa deve retornar a quantidade de questões corretas, e quantas foram perguntadas.
+- [ ] Os testes devem cobrir o seguinte caso `"what 2+2, sir?",4` como uma operação válida.
+
