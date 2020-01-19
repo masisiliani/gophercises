@@ -1,30 +1,47 @@
 package quizz
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
 
-import "strings"
+	errorPkg "github.com/masisiliani/gophercises/e001-quiz/cmd/error"
+	filePkg "github.com/masisiliani/gophercises/e001-quiz/cmd/file"
+)
 
-func RunQuizToUser(quizList [][]string) {
+func RunnerQuizz(csvFilename string) {
+	objFile, err := filePkg.OpenFile(csvFilename)
+	defer objFile.Close()
+	errorPkg.CheckError(err)
+
+	quizzSlice, err := filePkg.ReadQuizSlice(objFile)
+	errorPkg.CheckError(err)
+
+	questions := convertToQuestionMap(quizzSlice)
+
+	runQuizz(questions)
+}
+
+func runQuizz(questions []Question) {
 	var (
 		response                            string
 		countCorrectAnswered, countAnswered int32
 	)
 
-	for _, quiz := range quizList {
-		fmt.Printf("%s = ", quiz[0])
-		fmt.Scanln(&response)
+	for index, question := range questions {
+		fmt.Printf("Problem #%d: %s = \n", index+1, question.problem)
+		fmt.Scanf("%s\n", &response)
 
 		if strings.Compare(response, "*") == 0 {
 			break
 		}
 
-		isCorrect := verifyResult(response, quiz[1])
+		isCorrect := verifyResult(response, question.answer)
 
 		calculateCorrectAnswer(&countCorrectAnswered, isCorrect)
 		countAnswered++
 	}
 
 	countWrongAnswers := calculateResultQuiz(countAnswered, countCorrectAnswered)
-	printResultQuiz(countAnswered, countCorrectAnswered, countWrongAnswers, int32(len(quizList)))
+	printResultQuiz(countAnswered, countCorrectAnswered, countWrongAnswers, int32(len(questions)))
 
 }

@@ -9,7 +9,7 @@ func OpenFile(csvFilename string) (*os.File, error) {
 	return os.OpenFile(csvFilename, os.O_RDWR|os.O_CREATE, 0755)
 }
 
-func ReadQuizList(file *os.File) ([][]string, error) {
+func ReadQuizSlice(file *os.File) ([][]string, error) {
 	reader := csv.NewReader(file)
 	return reader.ReadAll()
 }
