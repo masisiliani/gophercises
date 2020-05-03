@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 
-	"github.com/masisiliani/gophercises/e001-quiz/cmd/quizz"
+	"e001-quiz/cmd/quizz"
 )
 
 var csvFilename string

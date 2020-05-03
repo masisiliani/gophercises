@@ -4,17 +4,20 @@ import (
 	"fmt"
 	"strings"
 
-	errorPkg "github.com/masisiliani/gophercises/e001-quiz/cmd/error"
 	filePkg "github.com/masisiliani/gophercises/e001-quiz/cmd/file"
 )
 
 func RunnerQuizz(csvFilename string) {
 	objFile, err := filePkg.OpenFile(csvFilename)
 	defer objFile.Close()
-	errorPkg.CheckError(err)
+	if err != nil {
+		panic(err)
+	}
 
 	quizzSlice, err := filePkg.ReadQuizSlice(objFile)
-	errorPkg.CheckError(err)
+	if err != nil {
+		panic(err)
+	}
 
 	questions := convertToQuestionMap(quizzSlice)
 
